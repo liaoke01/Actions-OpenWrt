@@ -18,3 +18,5 @@
 
 # Modify hostname
 #sed -i 's/OpenWrt/R2S/g' package/base-files/files/bin/config_generate
+
+git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon

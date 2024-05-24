@@ -96,6 +96,7 @@ jobs:
        path: |
              /openwrt/tools
              /openwrt/toolchain
+             /openwrt/target
        key: 1
     
     - name: Compile the firmware
@@ -115,6 +116,7 @@ jobs:
         path: | 
                /openwrt/tools
                /openwrt/toolchain
+               /openwrt/target
         key: 1
 
     - name: Check space usage

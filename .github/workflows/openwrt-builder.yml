@@ -15,7 +15,19 @@ name: OpenWrt Builder
 on:
   repository_dispatch:
   workflow_dispatch:
-
+     inputs:
+      cache-save:
+        default: "false"
+        type: choice
+        options:
+          - true
+           - false
+      cache-restore:
+        default: "true"
+        type: choice
+        options:
+          - true
+           - false
 env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: main

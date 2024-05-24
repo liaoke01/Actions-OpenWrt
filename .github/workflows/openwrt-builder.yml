@@ -26,6 +26,8 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
+  cache-save: false
+  cache-restore: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -86,13 +88,13 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+        
     - name: Restore cached dependencies
       if: cache-restore == 'true'
-      uses: actions/cache@main
+      uses: actions/cache/restore@main
       with:
        path: |
              /openwrt/tool
-        
        key: 1
     
     - name: Compile the firmware

@@ -1,1 +1,5 @@
-
+uci set network.wan.proto='pppoe'
+uci set network.wan.username='your_username'
+uci set network.wan.password='your_password'
+uci set luci.themes.ThemeName='argon'
+uci commit

@@ -26,8 +26,8 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
-  cache-save: false
-  cache-restore: true
+  cache-save: true
+  cache-restore: false
   TZ: Asia/Shanghai
 
 jobs:

@@ -18,16 +18,8 @@ on:
      inputs:
       cache-save:
         default: "false"
-        type: choice
-        options:
-          - true
-           - false
       cache-restore:
         default: "true"
-        type: choice
-        options:
-          - true
-           - false
 env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: main
@@ -38,8 +30,6 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
-  cache-save: false
-  cache-restore: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -102,7 +92,7 @@ jobs:
         find dl -size -1024c -exec rm -f {} \;
         
     - name: Restore cached dependencies
-      if: env.cache-restore == 'true'
+      if: inputs.cache-restore == 'true'
       uses: actions/cache/restore@main
       with:
        path: |
@@ -122,7 +112,7 @@ jobs:
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
 
     - name: Save Primes
-      if: env.cache-save == 'true'
+      if: inputs.cache-save == 'true'
       uses: actions/cache/save@main
       with: 
         path: | 

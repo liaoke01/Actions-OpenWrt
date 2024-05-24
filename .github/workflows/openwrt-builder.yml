@@ -94,7 +94,8 @@ jobs:
       uses: actions/cache/restore@main
       with:
        path: |
-             /openwrt/tool
+             /openwrt/tools
+             /openwrt/toolchain
        key: 1
     
     - name: Compile the firmware
@@ -112,7 +113,8 @@ jobs:
       uses: actions/cache/save@main
       with: 
         path: | 
-               /openwrt/tool
+               /openwrt/tools
+               /openwrt/toolchain
         key: 1
 
     - name: Check space usage

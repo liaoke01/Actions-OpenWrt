@@ -56,7 +56,12 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
-        
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@main
+      with: 
+        path: $GITHUB_WORKSPACE/files/etc/uci-defaults/99_my_defaults
+            
     - name: Clone source code
       working-directory: /workdir
       run: |
@@ -156,9 +161,8 @@ jobs:
       with:
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
-        files: |
-               ${{ env.FIRMWARE }}/*
-               $GITHUB_WORKSPACE/files/etc/uci-defaults/99_my_defaults
+        files: ${{ env.FIRMWARE }}/*
+               
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
       with:

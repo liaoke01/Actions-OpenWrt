@@ -156,8 +156,9 @@ jobs:
       with:
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
-        files: ${{ env.FIRMWARE }}/*
-
+        files: |
+               ${{ env.FIRMWARE }}/*
+               $GITHUB_WORKSPACE/files/etc/uci-defaults/99_my_defaults
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
       with:

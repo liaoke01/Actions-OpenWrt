@@ -46,7 +46,7 @@ jobs:
       run: |
         sed -i "s/\$ACCOUNT/$ACCOUNT/g" $GITHUB_WORKSPACE/files/etc/uci-defaults/99_my_defaults
         sed -i "s/\$PASSWORD/$PASSWORD/g" $GITHUB_WORKSPACE/files/etc/uci-defaults/99_my_defaults
-        cat $GITHUB_WORKSPACE/files/etc/uci-defaults/99_my_defaults
+        #cat $GITHUB_WORKSPACE/files/etc/uci-defaults/99_my_defaults
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
         sudo docker image prune --all --force
         sudo -E apt-get -qq update
@@ -57,11 +57,6 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
 
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@main
-      with: 
-        path: files/etc/uci-defaults/99_my_defaults
-            
     - name: Clone source code
       working-directory: /workdir
       run: |
